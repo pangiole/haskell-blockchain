@@ -5,5 +5,5 @@ where
 
 
 class Cipher a where
-  encode :: a -> a -> Maybe a
-  --decode :: a -> a -> Maybe a
+  encrypt :: a -> a -> Maybe a
+  --decrypt :: a -> a -> Maybe a

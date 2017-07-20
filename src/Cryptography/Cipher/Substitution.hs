@@ -6,9 +6,9 @@ where
 import Cryptography.Cipher
 import Data.List (elemIndex)
 
--- | Substitution chiper
+-- | The "substitution chiper" context is made of either clear messages, keys or chipered texts
 data Substitution = 
-    Message String 
+    Clear String 
   | Key String
   | Chipered String
   deriving (Show, Eq)
@@ -18,7 +18,7 @@ alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 --   key = "DEFGHIJKLMNOPQRSTUVWXYZABC"
 
 instance Cipher Substitution where
-  encode (Message msg) (Key key) = 
+  encrypt (Clear msg) (Key key) = 
     let index = \el -> elemIndex el alphabet
         maybeIndeces = sequence $ map index msg
         pickFromKeyAt =  map (\index -> key !! index)
